@@ -1,0 +1,58 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+.App {
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.uslugi{
+  display: flex;
+  justify-content: center;
+}
+.card{
+  margin-top: 20px;
+}
+.ant-card-body.card{
+  padding: 0;
+}
+.footer{
+  color:#f3f3f3;
+  text-align: center;
+  background: #001529;
+  margin-top: 20px;
+  font-family: 'Jost', sans-serif;
+}
+.burger{
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+}
+
+.nav{
+  width: 720px;
+  max-width: 100%;
+  background: #001529;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  z-index: 9999;
+  height: 80px;
+}
+.menubtn{
+  margin-top: 1px;
+  align-items: center;
+}
+.menubtn button{
+  margin-top: 10px;
+}
+.theme{
+  padding: 10px;
+}
+.ant-picker-calendar-header{
+  display: none;
+}
+.bmenu{
+  position: fixed;
+  left: 80%;
+}

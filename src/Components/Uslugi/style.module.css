@@ -1,0 +1,22 @@
+.usluga{
+    width: 300px;
+    overflow: hidden;
+    height: 300px;
+    position: relative;
+}
+.usluga img{
+    width: 400px;
+    height: 350px;
+    transform: translateX(-20px);
+    transform: translateY(-20px);
+}
+.btn{
+    position: absolute;
+    top: 80%;
+    left: 35%;
+}
+.card{
+    width: 300px;
+    overflow: hidden;
+    padding: 0;
+}
