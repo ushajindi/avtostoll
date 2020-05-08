@@ -4,19 +4,21 @@ import axios from 'axios'
 
 
 const Klient=()=>{
-    const [state,setState]=useState()
+    const [state,setState]=useState([])
     const [update,setUpdate]=useState(true)
     const [modal,setModal]=useState(false)
-    const [logi,setLogi]=useState({name:'your_fraze',vis:true,err:false})
+    const [logi,setLogi]=useState({name:'fraze',vis:true,err:false})
 
     useEffect(() => {
         window.scrollTo(0, 0)
-        if (localStorage.getItem("name")){
-            setLogi({vis: false,err: false,name:'your_fraze'})
+        if (localStorage.getItem("name")==="fraze") {
+            setLogi({vis: false, err: false, name: 'fraze'})
+        }else {
+            setLogi({vis:true,err: true,name: 'fraze'})
         }
     }, [])
     useEffect(()=>{
-        axios.get('your_api_url').then(promise=>{
+        axios.get('api').then(promise=>{
             if (state===promise.data){
 
             }else {
@@ -31,27 +33,35 @@ const Klient=()=>{
     },60000)
     const onFinish=(e)=>{
         if (e.name===logi.name){
-            setLogi({vis: false,err: false,name:'your_fraze'})
-            localStorage.setItem("your_fraze",e.name)
+            setLogi({vis: false,err: false,name:'api'})
+            localStorage.setItem("api",e.name)
         }else {
-            setLogi({vis:true,err: true,name: 'your_fraze'})
+            setLogi({vis:true,err: true,name: 'api'})
         }
     }
     return(
         <Card title='Список клиентов'>
             {!logi.vis?  <div>{modal?<div><h2>Ошибка позвоните</h2>
-                <h2><a href="tel:+79299977584">+79299977584</a></h2></div>:<List
-                itemLayout="horizontal"
-                dataSource={state}
-                renderItem={item => (
-                <List.Item>
-                    <List.Item.Meta
-                        title={<h3>{item.service}</h3>}
-                        description={<div><h4>{item.address}<br/>{item.name}<br/><a href={`tel:${item.tel}`}>{item.tel}</a><br/>{item.data}  {item.time}</h4></div>}
-                    />
-                </List.Item>
-            )}
-            />}</div>:<div> <Form
+                <h2><a href="tel:+79299977584">+79299977584</a></h2></div>
+                :<div>
+                    {state.map(el=>{
+                        return (
+                            <><div className='klientborder'><div><h2>{el.data}</h2>
+                                <h3>Всего заказов {el.info.length}</h3></div>
+                            <div>{el.info.map(info=>{
+                                return(
+                                    <div>
+                                        <div>{info.address}</div>
+                                        <div>{info.service}</div>
+                                        <div>{info.name}</div>
+                                        <div><a href={`tel:${info.tel}`}>{info.tel}</a></div>
+                                        <div className='klientbor'><span style={{marginRight:'10px'}}>{info.data}</span><span>{info.time}</span></div>
+                                    </div>
+                                )
+                            })}</div></div></>
+                        )
+                    })}
+                </div>}</div>:<div> <Form
                 name="basic"
                 onFinish={onFinish}
             >

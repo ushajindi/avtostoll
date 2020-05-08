@@ -5,7 +5,6 @@ import {Calendar} from "antd";
 const Calen=(props)=>{
     const onSelect=(e)=>{
         props.setData({data:e.format("DD-MM-YYYY"),vis:false})
-        console.log(e.format("DD-MM-YYYY"))
     }
     return(
         <div>

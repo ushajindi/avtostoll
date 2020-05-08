@@ -36,7 +36,7 @@ const OnlineZ=()=> {
                 'tel':form.tel,
                 'address':address.add
             }
-            axios.post('your_api_url',{fvalue},{headers:{"Content-Type" : "application/json"}}).then(promise=>{
+            axios.post('api',{fvalue},{headers:{"Content-Type" : "application/json"}}).then(promise=>{
                 setLoad(false)
                 setModal(true)
             }).catch(e=>{
@@ -56,8 +56,10 @@ const OnlineZ=()=> {
     const onDeleteUs=()=>{
         setUsluga({usluga: '',vis: true})
     }
-    const onDeleteTm=()=>{
+    const onDeletedata=()=>{
         setSdata({data: '',vis: true})
+    }
+    const onDeleteTm=()=>{
         setTime({time: '',vis: true})
     }
 
@@ -108,7 +110,7 @@ const OnlineZ=()=> {
                                     description={address.met}
                                 />
                             </div>
-                            <div onClick={onDelete} style={{paddingRight:'10px'}}><DeleteOutlined /></div>
+                            <div onClick={onDelete}><DeleteOutlined /></div>
                         </List.Item>
                     </List> }
 
@@ -153,7 +155,7 @@ const OnlineZ=()=> {
                                 </List.Item>
                             </List>
                                 {sdata.vis?<div className='animated slideInLeft faster'><Calen setData={setSdata}/></div>:<div>{time.vis?<div>
-                                    {sdata.data}<div className='animated slideInLeft faster'><Time setTime={setTime}/></div>
+                                    <div style={{display:'flex',justifyContent:'space-between'}}><div>{sdata.data}</div><div style={{paddingRight:'10px'}} onClick={onDeletedata}><DeleteOutlined /></div></div> <div className='animated slideInLeft faster'><Time setEmodal={setEmodal} data={sdata.data} address={address.add} service={usluga.usluga} setTime={setTime}/></div>
                                 </div>:<div>
                                     <List itemLayout="horizontal">
                                         <List.Item className='animated slideInDown faster' style={{display:'flex',justifyContent:'space-between',width:'100%'}}>

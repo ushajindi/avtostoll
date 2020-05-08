@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "proxy": "https://online-shino.herokuapp.com/",
   "private": true,
   "homepage": "https://автостол.рф/",
   "dependencies": {
