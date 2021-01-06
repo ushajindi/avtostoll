@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.2.0",
     "antd-dayjs-webpack-plugin": "^1.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "customize-cra": "^0.9.1",
     "moment": "2.18.1",
     "react": "^16.13.1",
